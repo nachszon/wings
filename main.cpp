@@ -1,29 +1,31 @@
-#include <iostream>
 #include <stdio.h>
-#include <cstring>
+#include <stdlib.h>
+#include<string.h>
 
-using namespace std;
+
+
 
 int main()
 {
 
 
-    char line[10];
-    char line2[10];
-    FILE *pointer_to_file;
-    FILE *pointer_to_file2;
 
-    pointer_to_file=fopen("plik.txt", "r");
-    pointer_to_file2=fopen("plik2.txt", "r");
+    char left_record[10];
+    char right_record[10];
+    FILE *pointer_to_left_file;
+    FILE *pointer_to_right_file;
 
-    while ((fgets (line,100,pointer_to_file))!=NULL){
+    pointer_to_left_file=fopen("plik.txt", "r");
+    pointer_to_right_file=fopen("plik2.txt", "r");
 
-        rewind(pointer_to_file2);
-        while ((fgets (line2,100,pointer_to_file2))!=NULL){
+    while ((fgets (left_record,100,pointer_to_left_file))!=NULL){
 
-                if (strstr(line,line2)){
+        rewind(pointer_to_right_file);
+        while ((fgets (right_record,100,pointer_to_right_file))!=NULL){
 
-                    printf ("%s",line);
+                if (strstr(left_record,right_record)){
+
+                    printf ("%s",left_record);
                 }
 
 
@@ -31,14 +33,10 @@ int main()
         }
 
         }
-         fclose(pointer_to_file);
-         fclose(pointer_to_file2);
+         fclose(pointer_to_left_file);
+         fclose(pointer_to_right_file);
 
 
     }
-
-
-
-
 
 
